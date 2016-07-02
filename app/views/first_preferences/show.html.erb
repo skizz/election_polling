@@ -1,0 +1,33 @@
+<h1>First Preferences</h1>
+<% @preferences.each do |pref| %>
+    <div class="row <%= pref.styles %>">
+      <div class="col-sm-1"><%= pref.ballot_position %></div>
+      <div class="col-sm-3">
+        <%= pref.candidate_surname%>,
+        <%= pref.candidate_given_name %>
+        <% if pref.elected? %>
+            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+        <% end %>
+      </div>
+      <div class="col-sm-1"><%= pref.party_ab %></div>
+      <div class="col-sm-1">
+        <div class="row">
+          <div class="col-sm-6 text-right"><%= pref.ordinary_votes %></div>
+          <div class="col-sm-6 text-right"><%= "%0.1f" % pref.swing %></div>
+        </div>
+      </div>
+    </div>
+<% end %>
+<% @informals.each do |pref| %>
+    <div class="row <%= pref.styles %>">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-3">INFORMAL</div>
+      <div class="col-sm-1"></div>
+      <div class="col-sm-1">
+        <div class="row">
+          <div class="col-sm-6 text-right"><%= pref.ordinary_votes %></div>
+          <div class="col-sm-6 text-right"><%= "%0.1f" % pref.swing %></div>
+        </div>
+      </div>
+    </div>
+<% end %>
